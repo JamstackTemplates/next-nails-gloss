@@ -1,112 +1,565 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ==========================================================================
+   Glossy Petal Nail Studio — "Lacquer" theme
+   Light ("bare"): rose-nude skin tones, black-cherry ink, oxblood lacquer.
+   Dark ("after dark"): black-cherry night, warm nude ink, brighter lacquer.
+   The "night" band stays dark in both modes (shade of the month, footer).
+   ========================================================================== */
+
 :root {
-  --bg: #f7f8fa;
-  --surface: #ffffff;
-  --text: #172033;
-  --muted: #526078;
-  --accent: #2457a7;
-  --accent-ink: #2457a7;
+  --bg: #f4e8e5;
+  --surface: #fbf4f2;
+  --surface-raised: #ecdcd7;
+  --text: #2a0b14;
+  --muted: #6a4b52;
+  --accent: #8c1230;
+  --accent-hover: #6f0d25;
+  --accent-ink: #8c1230;
   --on-accent: #ffffff;
-  --line: #c7cfdb;
-  --focus: #2457a7;
+  --line: #dcc6c0;
+  --line-strong: #b89a93;
+  --focus: #8c1230;
+
+  /* Skin and lacquer for the drawn artwork */
+  --skin-light: #ecc9bb;
+  --skin: #d9a995;
+  --skin-deep: #b77f6c;
+  --art-shadow: rgba(60, 14, 26, 0.28);
+  --arch-from: #ead6d0;
+  --arch-to: #f4e8e5;
+
+  /* Night band: dark in both modes */
+  --night: #1d0910;
+  --night-raised: #2b1018;
+  --night-ink: #f6e8e4;
+  --night-muted: #c8a9ab;
+  --night-line: #46212c;
+  --night-accent: #f2a1b4;
+
   --map-filter: none;
   color-scheme: light;
 }
+
 @media (prefers-color-scheme: dark) {
- :root:not(.light) {
-  --bg: #141923;
-  --surface: #1e2633;
-  --text: #f1f5fa;
-  --muted: #b5c2d5;
-  --accent: #2457a7;
-  --accent-ink: #a9cbff;
-  --on-accent: #ffffff;
-  --line: #61708a;
-  --focus: #a9cbff;
-  --map-filter: grayscale(.4) brightness(.8);
-  color-scheme: dark;
- }
+  :root:not(.light) {
+    --bg: #13060a;
+    --surface: #1c0a10;
+    --surface-raised: #281017;
+    --text: #f5e7e3;
+    --muted: #bfa0a3;
+    --accent: #b3163f;
+    --accent-hover: #c9204f;
+    --accent-ink: #f2829d;
+    --on-accent: #ffffff;
+    --line: #3a1a23;
+    --line-strong: #5e3440;
+    --focus: #f2829d;
+
+    --skin-light: #e4bba9;
+    --skin: #c99582;
+    --skin-deep: #9c6555;
+    --art-shadow: rgba(0, 0, 0, 0.55);
+    --arch-from: #2a1018;
+    --arch-to: #13060a;
+
+    --night: #0b0305;
+    --night-raised: #1a080e;
+    --night-ink: #f6e8e4;
+    --night-muted: #c3a3a6;
+    --night-line: #3a1a23;
+    --night-accent: #f2a1b4;
+
+    --map-filter: grayscale(0.35) brightness(0.8);
+    color-scheme: dark;
+  }
 }
+
 :root.dark {
-  --bg: #141923;
-  --surface: #1e2633;
-  --text: #f1f5fa;
-  --muted: #b5c2d5;
-  --accent: #2457a7;
-  --accent-ink: #a9cbff;
+  --bg: #13060a;
+  --surface: #1c0a10;
+  --surface-raised: #281017;
+  --text: #f5e7e3;
+  --muted: #bfa0a3;
+  --accent: #b3163f;
+  --accent-hover: #c9204f;
+  --accent-ink: #f2829d;
   --on-accent: #ffffff;
-  --line: #61708a;
-  --focus: #a9cbff;
-  --map-filter: grayscale(.4) brightness(.8);
+  --line: #3a1a23;
+  --line-strong: #5e3440;
+  --focus: #f2829d;
+
+  --skin-light: #e4bba9;
+  --skin: #c99582;
+  --skin-deep: #9c6555;
+  --art-shadow: rgba(0, 0, 0, 0.55);
+  --arch-from: #2a1018;
+  --arch-to: #13060a;
+
+  --night: #0b0305;
+  --night-raised: #1a080e;
+  --night-ink: #f6e8e4;
+  --night-muted: #c3a3a6;
+  --night-line: #3a1a23;
+  --night-accent: #f2a1b4;
+
+  --map-filter: grayscale(0.35) brightness(0.8);
   color-scheme: dark;
 }
 
 @theme {
   --color-*: initial;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --radius-ui: .375rem;
+  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', 'Didot', Georgia, serif;
+  --font-sans: 'Instrument Sans Variable', 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
+  --color-raised: var(--surface-raised);
   --color-ink: var(--text);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-ink: var(--accent-ink);
   --color-on-accent: var(--on-accent);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-skin: var(--skin);
+  --color-night: var(--night);
+  --color-night-raised: var(--night-raised);
+  --color-night-ink: var(--night-ink);
+  --color-night-muted: var(--night-muted);
+  --color-night-line: var(--night-line);
+  --color-night-accent: var(--night-accent);
 }
+
 :root {
-  --measure: 42rem;
   --jamstacks-font-family: var(--font-sans);
   --jamstacks-color-text: var(--text);
   --jamstacks-color-background: var(--surface);
   --jamstacks-color-primary: var(--accent);
-  --jamstacks-color-border: var(--line);
+  --jamstacks-color-border: var(--line-strong);
   --jamstacks-color-muted: var(--muted);
   --jamstacks-color-link: var(--accent-ink);
-  --jamstacks-border-radius: var(--radius-ui);
-  --jamstacks-control-height: 2.75rem;
+  --jamstacks-border-radius: 0.5rem;
+  --jamstacks-control-height: 3rem;
   --jamstacks-spacing: 1rem;
   --jamstacks-form-max-width: 40rem;
   --jamstacks-toggle-color: var(--text);
   --jamstacks-toggle-dark-color: var(--text);
-  --jamstacks-toggle-border: var(--line);
+  --jamstacks-toggle-border: var(--line-strong);
   --jamstacks-toggle-background: var(--surface);
   --jamstacks-toggle-dark-background: var(--surface);
   --jamstacks-toggle-focus-color: var(--focus);
 }
+
 @layer base {
-  html { background: var(--bg); color: var(--text); font-family: var(--font-sans); scroll-padding-top: 1.5rem; }
-  body { margin: 0; line-height: 1.6; }
-  main { min-height: 65vh; }
-  a { text-underline-offset: .2em; }
-  a:hover { text-decoration: underline; }
-  button { cursor: pointer; }
-  :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
-  [aria-current="page"] { text-decoration: underline; }
+  html {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    scroll-padding-top: 5.5rem;
+    accent-color: var(--accent);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+
+  main {
+    min-height: 65vh;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-weight: 440;
+    /* Pin the optical size: at display sizes Bodoni's hairlines otherwise vanish */
+    font-variation-settings: 'opsz' 12;
+    letter-spacing: -0.015em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
 }
-@utility wrap { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+
+@utility wrap {
+  width: min(100% - 2rem, 78rem);
+  margin-inline: auto;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
 @layer components {
-  .button { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .6rem 1.2rem; border: 1px solid var(--accent); border-radius: var(--radius-ui); background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; }
-  .button:hover { text-decoration: underline; }
-  .button-quiet { background: var(--surface); color: var(--accent-ink); border-color: var(--line); }
-  .text-link { color: var(--accent-ink); text-decoration: underline; }
-  .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .skip-link { position: absolute; left: 1rem; top: -8rem; padding: .75rem; z-index: 200; background: var(--surface); }
-  .skip-link:focus { top: 1rem; }
+  /* Display sizes: tight, high-contrast Didone set large */
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3.4rem, 8vw, 7.75rem);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    font-variation-settings: 'opsz' 16;
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5.6vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    font-variation-settings: 'opsz' 14;
+  }
+
+  .display-md {
+    font-family: var(--font-display);
+    font-weight: 420;
+    font-size: clamp(2rem, 3.6vw, 3.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+
+  .kicker {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.125rem;
+    letter-spacing: 0;
+    color: var(--muted);
+  }
+
+  /* Lacquer buttons: a deep fill with a soft wet highlight across the top */
+  .button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.1rem;
+    padding: 0.75rem 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 9999px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 48%),
+      var(--accent);
+    color: var(--on-accent);
+    font-weight: 560;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 10px 24px -12px var(--accent);
+    transition: background-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+  }
+
+  .button:hover {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 48%),
+      var(--accent-hover);
+    text-decoration: none;
+  }
+
+  .button-quiet {
+    background: transparent;
+    border-color: var(--line-strong);
+    color: var(--text);
+    box-shadow: none;
+  }
+
+  .button-quiet:hover {
+    background: var(--surface);
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .button-light {
+    background: #fbf4f2;
+    color: #2a0b14;
+    box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.6);
+  }
+
+  .button-light:hover {
+    background: #ffffff;
+    color: #2a0b14;
+  }
+
+  .button-ghost-light {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
+    box-shadow: none;
+  }
+
+  .button-ghost-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .text-link {
+    color: var(--accent-ink);
+    font-weight: 540;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+
+  .text-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: -8rem;
+    z-index: 200;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    background: var(--text);
+    color: var(--bg);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Tall arch: the almond silhouette of a nail, used as a frame */
+  .nail-arch {
+    border-radius: 999px 999px 1.25rem 1.25rem;
+    background: linear-gradient(180deg, var(--arch-from), var(--arch-to));
+  }
+
+  /* Wet lacquer surface for the closing band */
+  .lacquer-band {
+    position: relative;
+    isolation: isolate;
+    background: var(--accent);
+    color: #ffffff;
+  }
+
+  .lacquer-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 90% at 18% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+      radial-gradient(50% 70% at 100% 100%, rgba(0, 0, 0, 0.35), transparent 70%),
+      linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.08) 42%, transparent 54%);
+    pointer-events: none;
+  }
+
+  /* Price-list leader between service name and price */
+  .menu-leader {
+    flex: 1 1 2rem;
+    min-width: 1.5rem;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px dotted var(--line-strong);
+  }
+
+  /* Native horizontal scroll strip for Fresh from the table (mobile) */
+  .set-strip {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(16.5rem, 78vw);
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+
+  .set-strip > * {
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 768px) {
+    .set-strip {
+      grid-auto-flow: row;
+      grid-auto-columns: auto;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.5rem 1.5rem;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+  }
+
+  /* Nail tips on a set card lean in on hover, like fingers spreading */
+  .set-card .set-nails > * {
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .set-card:hover .set-nails > *:nth-child(1) { transform: translateY(var(--ty, 0)) rotate(-4deg); }
+  .set-card:hover .set-nails > *:nth-child(2) { transform: translateY(var(--ty, 0)) rotate(-2deg); }
+  .set-card:hover .set-nails > *:nth-child(4) { transform: translateY(var(--ty, 0)) rotate(2deg); }
+  .set-card:hover .set-nails > *:nth-child(5) { transform: translateY(var(--ty, 0)) rotate(4deg); }
+
+  /* Mobile nav popover */
+  .mobile-nav-popover {
+    position: fixed;
+    inset: auto;
+    inset-block-start: 4.75rem;
+    inset-inline-end: 1rem;
+    inline-size: min(86dvw, 20rem);
+    max-block-size: calc(100dvh - 6rem);
+    overflow: auto;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 24px 48px -20px var(--art-shadow);
+  }
+
+  .mobile-nav-popover::backdrop {
+    background: rgba(19, 6, 10, 0.35);
+    backdrop-filter: blur(3px);
+  }
+
+  .mobile-nav-popover:not(:is(:popover-open, .\:popover-open)) {
+    display: none;
+  }
 }
-.map iframe { width: 100%; min-height: 20rem; border: 0; filter: var(--map-filter); }
-.enquiry__host { display: block; }
-.enquiry__status { margin-top: 1rem; color: var(--muted); }
-.enquiry[data-state="present"] > .enquiry__status { display: none; }
+
+.map iframe {
+  width: 100%;
+  min-height: 20rem;
+  border: 0;
+  filter: var(--map-filter);
+}
+
+.enquiry__host {
+  display: block;
+}
+
+.enquiry__status {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.enquiry[data-state='present'] > .enquiry__status {
+  display: none;
+}
+
+/* Hero photography: show the photo that matches the active theme */
+.hero-photo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .hero-photo-light { display: none; }
+  :root:not(.light) .hero-photo-dark { display: block; }
+}
+
+:root.dark .hero-photo-light { display: none; }
+:root.dark .hero-photo-dark { display: block; }
+
+/* The one orchestrated moment: a single wet highlight glides down the hero nails on load */
+@keyframes lacquer-sheen {
+  0% { transform: translateY(-40%); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(160%); opacity: 0; }
+}
+
+.hero-sheen {
+  animation: lacquer-sheen 2.4s 400ms cubic-bezier(0.3, 0.1, 0.2, 1) both;
+  transform-box: fill-box;
+}
+
+@keyframes hero-rise {
+  from { transform: translateY(6%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.hero-rise {
+  animation: hero-rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-sheen {
+    opacity: 0;
+  }
+
+  .set-card:hover .set-nails > * {
+    transform: translateY(var(--ty, 0)) !important;
+  }
 }
+
+@media (forced-colors: active) {
+  .button {
+    border: 1px solid ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+
+  [aria-current='page'] {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .nail-swatch {
+    forced-color-adjust: none;
+  }
+}
+
 @media print {
-  nav, .skip-link, .enquiry, button { display: none !important; }
-  html { background: white; color: black; }
-  a { color: inherit; }
+  header nav,
+  .skip-link,
+  .enquiry,
+  button,
+  .lookbook-filters,
+  .no-print {
+    display: none !important;
+  }
+
+  html, body, .bg-night, .lacquer-band {
+    background: white !important;
+    color: black !important;
+  }
+
+  .lacquer-band::before {
+    display: none !important;
+  }
+
+  a {
+    color: inherit;
+  }
 }

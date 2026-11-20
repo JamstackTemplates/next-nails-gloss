@@ -72,3 +72,16 @@ and Pages never import/read it. Keep site.config.json, the form and workflow out
 light/dark captures after a fresh normal build and run node --test jamstacks/config.test.mjs separately.
 Each new template needs its own business-led layout/fonts/art and OG image; do not ship the neutral
 starter as a final design. Remove `plan/` and `.claude/skills/` before publishing a gallery template once reviewed.
+
+## File ownership (Glossy Petal Nail Studio)
+
+- `content/business.ts`: studio name, wordmark, email, phone, South Congress address, landmark, weekly opening hours, time zone and enquiry copy.
+- `content/menu.ts`: services, categories, prices, durations, availability and `"from"` price helpers.
+- `content/shades.ts`: 12 polish shades, the single `featured` Shade of the Month + story, and `heroPhoto` (which shade the hero photos show).
+- `public/hero-light.webp`, `public/hero-dark.webp`: 4:5 hero photography, one per theme.
+- `content/lookbook.ts`: 14 five-nail SVG designs, colour families, technique references and 6 featured Home designs.
+- `content/aftercare.ts`: first-24-hour checklist, 4 care guides, Do/Don't lists and return timelines.
+- `app/**/page.tsx`: route composition and editable page prose/headings/CTAs.
+- `components/art/`: bespoke inline SVG artwork (hero hand, glass polish bottle, glossy nail tips, thin-line icons).
+- `app/tailwind.input.css`: light ("bare") and dark ("after dark") tokens, display type scale and shared component styles.
+

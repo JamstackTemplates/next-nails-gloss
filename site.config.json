@@ -1,7 +1,8 @@
 {
-  "name": "Jamstacks starter",
-  "description": "A neutral Next.js foundation for Jamstacks websites.",
-  "domain": "",
+  "name": "Glossy Petal Nail Studio",
+  "description": "Glossy Petal Nail Studio in Austin: gel and classic manicures, spa pedicures and hand-painted nail art, with a lookbook of designs and aftercare tips.",
+  "domain": "next-nails-gloss.jamstacks.net",
+  "timeZone": "America/Chicago",
   "jamstacks": {
     "siteId": "",
     "cdnUrl": "https://cdn.jamstacks.net"

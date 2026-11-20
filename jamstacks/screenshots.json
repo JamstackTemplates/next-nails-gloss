@@ -1,0 +1,22 @@
+{
+  "templateId": "next-nails-gloss",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "fullPage": false,
+  "captures": [
+    {
+      "mode": "light",
+      "sha256": "1e4a9e1a4e1f7e1ab5fcc7cac7a870211517ded13d07185558bd5a22efbb2ad4",
+      "file": "jamstacks/home-light.jpg",
+      "bytes": 90952
+    },
+    {
+      "mode": "dark",
+      "sha256": "55328314893752611187525efaedacb27c4743137bb6f53afad1266eb073bd25",
+      "file": "jamstacks/home-dark.jpg",
+      "bytes": 91381
+    }
+  ]
+}

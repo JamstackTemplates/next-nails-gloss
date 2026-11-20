@@ -1,6 +1,10 @@
-import { SiteLink } from '../components/site-link';
+import { NotFoundScene } from '../components/inner-sections';
+
 export default function NotFound() {
-  return <section className="wrap py-20"><h1 className="text-4xl font-bold">Page not found</h1>
-    <p className="my-6 text-muted">Try the home page or get in touch.</p>
-    <SiteLink href="/" className="button">Go home</SiteLink></section>;
+  return (
+    <NotFoundScene
+      heading="Oops, that one smudged."
+      copy="We couldn’t find that page. Head back to the studio home, the full menu or the lookbook."
+    />
+  );
 }
